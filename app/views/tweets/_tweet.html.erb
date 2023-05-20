@@ -1,3 +1,4 @@
+<!--
 <div id="<%= dom_id tweet %>">
   <p>
     <strong>Username:</strong>
@@ -9,4 +10,14 @@
     <%= tweet.Description %>
   </p>
 
+  <%= link_to "Show this tweet", tweet %>
 </div>
+-->
+    <tr id="<%= dom_id tweet %>">
+      <td><%= tweet.UserName %></td>
+      <td><%= tweet.Description %></td>
+      <td>
+        <%= link_to "Mostrar Tweet", tweet, :class => "btn btn-primary" %>
+      </td>
+    </tr>
+  

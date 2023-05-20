@@ -1,14 +1,41 @@
-<p style="color: green"><%= notice %></p>
+<!--<p style="color: green"><%= notice %></p>-->
 
 <h1>Tweets</h1>
+
+<form action="/tweets/buscar" class="row g-3" method="post">
+  <div class="col-auto">
+    <input type="text" class="form-control" id="tweet_id" name="tweet_id">
+  </div>
+  <div class="col-auto">
+    <button type="submit" class="btn btn-primary mb-3">Buscar</button>
+  </div>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Usuario</th>
+      <th scope="col">Tweet</th>
+      <th scope="col">Editar</th>
+    </tr>
+  </thead>
+  <tbody>
 
 <div id="tweets">
   <% @tweets.each do |tweet| %>
     <%= render tweet %>
+
+    <!--
     <p>
       <%= link_to "Show this tweet", tweet %>
     </p>
+    -->
   <% end %>
 </div>
+  </tbody>
+</table>
 
-<%= link_to "New tweet", new_tweet_path %>
+<div class="digg_pagination">
+  <%= will_paginate @tweets %>
+  <%= link_to "New tweet", new_tweet_path %>
+</div>
