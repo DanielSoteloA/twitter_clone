@@ -9,7 +9,15 @@ class TweetsController < ApplicationController
 
   def buscar
     @tweets = Tweet.find(params[:tweet_id])
-  end
+    
+    print "\m***************************\n"
+    print @tweets
+    print "\m***************************\n"
+
+    redirect_to(@tweets)
+
+    #format.html { redirect_to buscar(@tweets), notice: "Tweet Encontrado" }
+  end 
 
   # GET /tweets/1 or /tweets/1.json
   def show
