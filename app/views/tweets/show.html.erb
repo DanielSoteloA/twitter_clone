@@ -1,10 +1,24 @@
-<p style="color: green"><%= notice %></p>
+<div class="container-fluid">
+  <div id="body">
 
-<%= render @tweet %>
+    <p style="color: green"><%= notice %></p>
+    
+    <div class="card" style="width: 31rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= @tweet.UserName %></h5>
+        <p class="card-text"><%= @tweet.Description %></p>
+        <div class="d-inline-block p-1">
+          <%= link_to "Editar Tweet", edit_tweet_path(@tweet), :class => "btn btn-primary" %>
+        </div>
+        <div class="d-inline-block p-1">
+          <%= button_to "Eliminar Tweet" , @tweet, method: :delete, :class => "btn btn-danger",
+          form: {data: {turbo_confirm: '¿Esta Seguro de Eliminar?'}}%>
+        </div>
+        <div class="d-inline-block p-1">
+          <%= link_to "Volver a los Tweets" , tweets_path, :class => "btn btn-secondary" %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div>
-  <%= link_to "Edit this tweet", edit_tweet_path(@tweet) %> |
-  <%= link_to "Back to tweets", tweets_path %>
-
-  <%= button_to "Destroy this tweet", @tweet, method: :delete %>
-</div>
+ </div>

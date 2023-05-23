@@ -3,21 +3,13 @@ class TweetsController < ApplicationController
 
   # GET /tweets or /tweets.json
   def index
-    #@tweets = Tweet.all
-    @tweets = Tweet.paginate(page: params[:page], per_page: 5)
+    if params[:busqueda].present?
+      @q = params[:busqueda].downcase
+      @tweets = Tweet.where(UserName: @q).paginate(page: params[:page], per_page: 10)      
+    else
+      @tweets = Tweet.paginate(page: params[:page], per_page: 10)
+    end
   end
-
-  def buscar
-    @tweets = Tweet.find(params[:tweet_id])
-    
-    print "\m***************************\n"
-    print @tweets
-    print "\m***************************\n"
-
-    redirect_to(@tweets)
-
-    #format.html { redirect_to buscar(@tweets), notice: "Tweet Encontrado" }
-  end 
 
   # GET /tweets/1 or /tweets/1.json
   def show
