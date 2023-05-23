@@ -27,18 +27,18 @@ Prueba - Introducción a desarrollo de aplicaciones con Ruby on Rails
 		- get 'tweets/index'
   		- root "tweets#index"
 	* models/tweet.rb
-		validates :UserName, :Description, presence: { message: "Campo Obligado"}
-		[para evitar ingreso de registros sin informacion]
+		- validates :UserName, :Description, presence: { message: "Campo Obligado"}
+		- [para evitar ingreso de registros sin informacion]
 	* tweets_controller.rb
 		- Metodo index
-		def index
-			if params[:busqueda].present?
-			@q = params[:busqueda].downcase
-			@tweets = Tweet.where(UserName: @q).paginate(page: params[:page], per_page: 10)      
-			else
-			@tweets = Tweet.paginate(page: params[:page], per_page: 10)
-			end
-		end
+		- def index
+			- if params[:busqueda].present?
+			- @q = params[:busqueda].downcase
+			- @tweets = Tweet.where(UserName: @q).paginate(page: params[:page], per_page: 10)      
+			- else
+			- @tweets = Tweet.paginate(page: params[:page], per_page: 10)
+			- end
+		- end
 		- Busqueda por UserName en minusculas, (texto exacto) [No se usa Gema]
 	* Vistas uso de bootstrap 5.3.0
 
